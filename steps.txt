@@ -1,0 +1,3 @@
+https://github.com/Sule-Ss/movie-app-with-react.git
+npm install
+npm start
