@@ -18,8 +18,8 @@ resource "aws_ecs_task_definition" "my_task_definition" {
       image = "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/movie-app-weiheng-test:latest"
       portMappings = [
         {
-          containerPort = 3000
-          hostPort      = 3000
+          containerPort = 80
+          hostPort      = 80
           protocol      = "tcp"
         }
       ]
