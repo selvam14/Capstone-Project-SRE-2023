@@ -51,31 +51,35 @@ jobs:
       run: terraform init
       working-directory: ../../terraform.tf
 
+    - name: Plan Terraform changes
+      run: terraform plan
+      working-directory: ../../terraform.tf  
+
     - name: Apply Terraform changes
       run: terraform apply -auto-approve
       working-directory: ../../terraform.tf  
 
-    - name: Get ECS Task Definition JSON
-      id: get-ecs-task-definition
-      run: echo "::set-output name=ecs-task-definition-path::$(terraform output -json ecs_task_definition_json | jq -r '.value')"
+    # - name: Get ECS Task Definition JSON
+    #   id: get-ecs-task-definition
+    #   run: echo "::set-output name=ecs-task-definition-path::$(terraform output -json ecs_task_definition_json | jq -r '.value')"
 
-    - name: Fill in the new image ID in the Amazon ECS task definition
-      id: task-def
-      uses: aws-actions/amazon-ecs-render-task-definition@v1
-      with:
-        task-definition: ecs-task-definition.json
-        container-name: movie-app-image
-        image: ${{ steps.build-image.outputs.image }}
+    # - name: Fill in the new image ID in the Amazon ECS task definition
+    #   id: task-def
+    #   uses: aws-actions/amazon-ecs-render-task-definition@v1
+    #   with:
+    #     task-definition: ecs-task-definition.json
+    #     container-name: movie-app-image
+    #     image: ${{ steps.build-image.outputs.image }}
 
-    - name: Register or update ECS task definition
-      uses: aws-actions/amazon-ecs-register-task-definition@v1
-      with:
-        task-definition: ${{ steps.get-ecs-task-definition.outputs.ecs-task-definition-path }}
+    # - name: Register or update ECS task definition
+    #   uses: aws-actions/amazon-ecs-register-task-definition@v1
+    #   with:
+    #     task-definition: ${{ steps.get-ecs-task-definition.outputs.ecs-task-definition-path }}
 
-    - name: Deploy Amazon ECS task definition
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-      with:
-        task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: movie-app-image-service
-        cluster: movie-app-image-cluster
-        wait-for-service-stability: true
+    # - name: Deploy Amazon ECS task definition
+    #   uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+    #   with:
+    #     task-definition: ${{ steps.task-def.outputs.task-definition }}
+    #     service: movie-app-image-service
+    #     cluster: movie-app-image-cluster
+    #     wait-for-service-stability: true
