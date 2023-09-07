@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 locals {
-  application_name = "movie-app-image"
+  application_name = "movie-app-weiheng-test"
 }
 
 resource "aws_ecs_task_definition" "my_task_definition" {
@@ -15,7 +15,7 @@ resource "aws_ecs_task_definition" "my_task_definition" {
   container_definitions = jsonencode([
     {
       name  = local.application_name
-      image = "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/movie-app-image:latest"
+      image = "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/movie-app-weiheng-test:latest"
       portMappings = [
         {
           containerPort = 8080
