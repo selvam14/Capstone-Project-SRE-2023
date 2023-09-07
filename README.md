@@ -12,6 +12,4 @@ https://movieapp-react-sule.netlify.app/
 
 
 
-![Image alt text](assets/Picture_1.png)
-
 
