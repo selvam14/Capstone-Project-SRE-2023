@@ -57,3 +57,8 @@ resource "aws_ecs_service" "my_ecs_service" {
   deployment_minimum_healthy_percent = 100
   enable_ecs_managed_tags = true
 }
+
+# Output the ECS task definition as a JSON file
+output "ecs_task_definition_json" {
+  value = aws_ecs_task_definition.my_task_definition
+}
