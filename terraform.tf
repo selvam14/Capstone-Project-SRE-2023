@@ -36,6 +36,7 @@ resource "aws_ecs_cluster" "my_ecs_cluster" {
 }
 
 resource "aws_ecs_service" "my_ecs_service" {
+  count           = var.create_ecs_service ? 1 : 0
   name            = "${local.application_name}-service"
   cluster         = aws_ecs_cluster.my_ecs_cluster.id
   task_definition = aws_ecs_task_definition.my_task_definition.arn
