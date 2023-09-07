@@ -49,15 +49,15 @@ jobs:
 
     - name: Initialize Terraform
       run: terraform init
-      working-directory: ../../terraform.tf
+      working-directory: .
 
     - name: Plan Terraform changes
       run: terraform plan
-      working-directory: ../../terraform.tf  
+      working-directory: .  
 
     - name: Apply Terraform changes
       run: terraform apply -auto-approve
-      working-directory: ../../terraform.tf  
+      working-directory: .
 
     # - name: Get ECS Task Definition JSON
     #   id: get-ecs-task-definition
