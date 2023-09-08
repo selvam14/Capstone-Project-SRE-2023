@@ -26,6 +26,10 @@ Together, they empower you to harness the full potential of your data, ensuring 
 
 ---
 
+## Solution Architecture
+
+---
+
 ## Movie App Project
 
 The application team recently worked with an entertainment company specializing in streaming online media content to create a movie application. The movie app project used React components, router redirects, Firebase backend, and data pulled from an API with Axios.
