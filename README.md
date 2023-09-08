@@ -113,3 +113,15 @@ docker build -t movie-app-image .
 ```
 aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com
 ```
+
+## Create a Repository in Amazon Elastic Container Registry (ECR)
+1. Next, you need to create a repository in Amazon Elastic Container Registry (ECR) where you can store your Docker image.
+
+2. Enter a unique name for your repository in the ECR console.
+
+## Tag Docker Image with Amazon Elastic Container Registry
+After creating the repository, you'll need to tag your Docker image with the ECR repository URL and a specific tag (e.g., "latest"). This is necessary for pushing the image to ECR.
+```
+docker tag movie-app-image:latest 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/movie-app-image:latest
+```
+(Replace "movie-app-image" with your image name and "latest" with your desired tag if different.)
