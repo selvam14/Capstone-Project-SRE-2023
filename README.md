@@ -40,8 +40,10 @@ The application team recently worked with an entertainment company specializing 
 
 The application was containerized using Docker and deployed to AWS Elastic Container Service.
 
+![containerisation_workflow](./assets/containerisation_workflow.png)
 ### Cloning the Repository to Your Local Environment
 
+![git-clone](./assets/git_clone.png)
 ```shell
 git clone https://github.com/Sule-Ss/movie-app-with-react.git
 cd movie-app-with-react
@@ -49,7 +51,7 @@ code .
 ```
 
 ### Create Dockerfile
-
+![dockerfile-sample](./assets/create-dockerfile1.png)
 ```Dockerfile
 # Use a base image
 FROM node:14 as build
@@ -82,3 +84,119 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
+## Docker Commands
+1. Open Docker Desktop and sign in.
+
+2. Go back to your VS Code.
+
+3. Build the Docker image with a tag (name) for the image:
+```
+docker build -t movie-app-image .
+```
+(The -t flag is used to tag or name the Docker image that is being built.)
+
+4. Run the Docker container, mapping port 8080 on the host to port 80 in the container, and run it in detached mode:
+```
+docker run -p 8080:80 -d movie-app-image
+```
+(The -p flag is used to map or publish ports between the host and the container. For example, port 80 within the container will be mapped to port 8080 on the host machine. The -d flag is used to run a container in detached mode, which means the container runs in the background as a daemon process.)
+
+5. Once you can deploy locally, you can proceed to deploy it on Amazon Elastic Container Service (ECS).
+
+6. Build the Docker image again with the same tag (if needed) to ensure you have the latest image locally:
+```
+docker build -t movie-app-image .
+```
+7. The Docker image will be pushed to Amazon Elastic Container Registry (ECR). Ensure you are signed in to your AWS account via a web browser.
+
+8. Obtain an ECR login password for the specified AWS region and log in to ECR using Docker:
+```
+aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com
+```
+
+## Create a Repository in Amazon Elastic Container Registry (ECR)
+1. Next, you need to create a repository in Amazon Elastic Container Registry (ECR) where you can store your Docker image.
+
+2. Enter a unique name for your repository in the ECR console.
+
+## Tag Docker Image with Amazon Elastic Container Registry
+After creating the repository, you'll need to tag your Docker image with the ECR repository URL and a specific tag (e.g., "latest"). This is necessary for pushing the image to ECR.
+```
+docker tag movie-app-image:latest 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/movie-app-image:latest
+```
+(Replace "movie-app-image" with your image name and "latest" with your desired tag if different.)
+
+## Push Image to Amazon Elastic Container Registry (ECR)
+Now that your Docker image is tagged correctly, you can push it to Amazon Elastic Container Registry (ECR) using the following command:
+```
+docker push 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/movie-app-image:latest
+```
+
+## Terraform Configuration for Amazon Elastic Container Service (ECS)
+The deployment of your container to Amazon Elastic Container Service (ECS) will be orchestrated using Terraform. You will need to create a Terraform configuration file in your Visual Studio Code (VS Code) environment. Below is the Terraform code for configuring your ECS setup:
+```Terraform.tf
+provider "aws" {
+  region = "ap-southeast-1" # Modify this with your desired AWS region
+}
+
+locals {
+  application_name = "movie-app-image" # Replace with your application name
+}
+
+resource "aws_ecs_task_definition" "my_task_definition" {
+  family                   = local.application_name
+  network_mode             = "awsvpc"
+  requires_compatibilities = ["FARGATE"]
+  execution_role_arn      = "arn:aws:iam::255945442255:role/ecsTaskExecutionRole" # Replace with your execution role ARN
+
+  container_definitions = jsonencode([
+    {
+      name  = local.application_name
+      image = "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/movie-app-image:latest" # Modify with your ECR image URL
+      portMappings = [
+        {
+          containerPort = 8080
+          hostPort      = 8080
+          protocol      = "tcp"
+        }
+      ]
+      essential = true
+    }
+  ])
+
+  cpu    = "512"
+  memory = "1024"
+}
+
+resource "aws_ecs_cluster" "my_ecs_cluster" {
+  name = "${local.application_name}-cluster"
+}
+
+resource "aws_ecs_service" "my_ecs_service" {
+  name            = "${local.application_name}-service"
+  cluster         = aws_ecs_cluster.my_ecs_cluster.id
+  task_definition = aws_ecs_task_definition.my_task_definition.arn
+  launch_type     = "FARGATE"
+
+  network_configuration {
+    subnets          = ["subnet-04056e91a09a5b4bf", "subnet-bea677f6", "subnet-29ed7170"] # Modify with your subnet IDs
+    assign_public_ip = true
+    security_groups = ["sg-b4db57fc"] # Modify with your security group IDs
+  }
+
+  scheduling_strategy = "REPLICA"
+  desired_count       = 1
+  platform_version    = "LATEST"
+  deployment_controller {
+    type = "ECS"
+  }
+  deployment_maximum_percent = 200
+  deployment_minimum_healthy_percent = 100
+  enable_ecs_managed_tags = true
+}
+```
+
+Commands used:
+- terraform init
+- terraform plan
+- terraform apply
