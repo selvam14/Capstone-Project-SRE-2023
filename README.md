@@ -214,67 +214,70 @@ Commands used:
 
 The deployment of your application using Terraform scripts will be automated via GitHub Actions.
 
+![githubactions](./assets/githubactions.png)
+
 ## Setting Up GitHub Actions Workflow
 
-1. Inside your repository, create a `.github/workflows` directory and add a YAML file for your workflow. Name it something like `deploy-movie-app.yml`.
+Inside your repository, create a `.github/workflows` directory and add a YAML file for your workflow. Name it something like `deploy-movie-app.yml`.
 
-   ```yaml
-   name: Deploy Movie App
-   run-name: ${{ github.actor }} is doing CICD to deploy AWS ECS
+```yaml
+name: Deploy Movie App
+run-name: ${{ github.actor }} is doing CICD to deploy AWS ECS
 
-   on:
-     push:
-       branches:
-         - main
+on:
+push:
+ branches:
+   - main
 
-   jobs:
-     deploy:
-       name: Deploy Movie App
-       runs-on: ubuntu-latest
+jobs:
+deploy:
+ name: Deploy Movie App
+ runs-on: ubuntu-latest
 
-       steps:
-         - name: Checkout
-           uses: actions/checkout@v3
+ steps:
+   - name: Checkout
+     uses: actions/checkout@v3
 
-         - name: Configure AWS credentials
-           uses: aws-actions/configure-aws-credentials@v1
-           with:
-             aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
-             aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-             aws-region: ap-southeast-1
+   - name: Configure AWS credentials
+     uses: aws-actions/configure-aws-credentials@v1
+     with:
+       aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+       aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+       aws-region: ap-southeast-1
 
-         - name: Login to Amazon ECR
-           id: login-ecr
-           uses: aws-actions/amazon-ecr-login@v1
+   - name: Login to Amazon ECR
+     id: login-ecr
+     uses: aws-actions/amazon-ecr-login@v1
 
-         - name: Build, tag, and push image to Amazon ECR
-           id: build-image
-           env:
-             ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-             ECR_REPOSITORY: movie-app-weiheng-test
-             IMAGE_TAG: latest
-           run: |
-             # Build a Docker container and
-             # push it to ECR so that it can
-             # be deployed to ECS.
-             docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-             docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-             echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+   - name: Build, tag, and push image to Amazon ECR
+     id: build-image
+     env:
+       ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+       ECR_REPOSITORY: movie-app-weiheng-test
+       IMAGE_TAG: latest
+     run: |
+       # Build a Docker container and
+       # push it to ECR so that it can
+       # be deployed to ECS.
+       docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+       docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+       echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
-         - name: Initialize Terraform
-           run: terraform init
-           working-directory: .
+   - name: Initialize Terraform
+     run: terraform init
+     working-directory: .
 
-         - name: Plan Terraform changes
-           run: terraform plan
-           working-directory: .
+   - name: Plan Terraform changes
+     run: terraform plan
+     working-directory: .
 
-         - name: Apply Terraform changes
-           run: terraform apply -auto-approve
-           working-directory: .
-      ```
+   - name: Apply Terraform changes
+     run: terraform apply -auto-approve
+     working-directory: .
+```
 
-     Create secrets in your GitHub repository to store sensitive data like AWS access keys. Name them AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.
+Create secrets in your GitHub repository to store sensitive data like AWS access keys. Name them AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.
+![add_secrets](./assets/add_secrets.png)
 
 ## Running the GitHub Actions Workflow
 To trigger the GitHub Actions workflow, use the following commands:
@@ -285,3 +288,6 @@ git commit -m 'Initial commit'
 git push
 ```
 Inside GitHub Actions, you can monitor the workflow's progress, debug any errors, and ensure that all steps are executed successfully.
+![githubactions-jobrunning](./assets/githubactions-jobrunning  .png)
+
+![github_actions_workflow runs](./assets/github_actions_workflow%20runs.png)
