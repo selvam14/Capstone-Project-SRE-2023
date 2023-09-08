@@ -1,3 +1,4 @@
+![ntu_logo](./assets/ntu%20logo.png) 
 # PaCE@NTU SCTP Cohort 2 - Cloud Infrastructure Engineering
 
 ## Monitoring Large Applications (Site Reliability Engineering)
@@ -27,6 +28,7 @@ Together, they empower you to harness the full potential of your data, ensuring 
 ---
 
 ## Solution Architecture
+![solution architecture image](./assets/solution%20architecture.png)
 
 ---
 
