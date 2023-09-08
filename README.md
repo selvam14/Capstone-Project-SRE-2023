@@ -297,18 +297,25 @@ Inside GitHub Actions, you can monitor the workflow's progress, debug any errors
 1. Open the AWS Management Console and navigate to **Elastic Container Service (ECS)**.
 
 2. In the ECS dashboard, find and click on the `movie-app-image-cluster`. This will take you to the cluster details page.
-
+![verify1](./assets/verify1.png)
 3. On the cluster details page, locate and click on the service name, which should be `movie-app-image-service`.
-
+![verify1](./assets/verify2.png)
 4. Next, click on the **Tasks** tab to view the list of tasks.
-
+![verify1](./assets/verify3.png)
 5. Locate the specific task related to your deployment and click on it.
 
 6. In the task details, go to the **Network Bindings** tab to access the external link.
-
+![verify1](./assets/verify4.png)
 7. The movie application will be accessible through the external link. You can access it by clicking on the provided link, which should look something like: [http://13.214.25.176:80](http://13.214.25.176:80).
 
 
 ## Cloudwatch logging:
 
 Go into Cloudwatch service, we can see some startup logs have been generated:
+![cw1](./assets/cw1.png)
+
+![cw2](./assets/cs2.png)
+
+![cw3](./assets/cw3.png)
+
+![cw4](./assets/cw4.png)
