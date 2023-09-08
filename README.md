@@ -324,10 +324,10 @@ Go into Cloudwatch service, we can see some startup logs have been generated:
 
 > ![](./assets/image96.png)
 >
-> **[Grafana Installation]{.underline}**
+> **[Grafana Installation]**
 >
 > The latest version can be downloaded from:
-> [[https://grafana.com/grafana/download?pg=get&plcmt=selfmanaged-box1-cta1]{.underline}](https://grafana.com/grafana/download?pg=get&plcmt=selfmanaged-box1-cta1)
+> [[https://grafana.com/grafana/download?pg=get&plcmt=selfmanaged-box1-cta1]](https://grafana.com/grafana/download?pg=get&plcmt=selfmanaged-box1-cta1)
 >
 > Commands to download and install Grafana
 
@@ -388,7 +388,7 @@ Select Custom TCP \> Port 3000 \> 0.0.0.0/0
 
 Access the public IP with the port
 
-[[http://54.151.137.203:3000]{.underline}](http://54.151.137.203:3000)
+[[http://54.151.137.203:3000]](http://54.151.137.203:3000)
 
 ![](./assets/image49.png)
 
@@ -396,19 +396,19 @@ Enter the default credentials if you are just setting it up. Otherwise,
 please check the credentials in your centralized password management
 tool.
 
-[[https://drive.google.com/file/d/1CArzX-nIfd7aJtKNEK4V2e_XYq3DsepS/view?usp=drive_link]{.underline}](https://drive.google.com/file/d/1CArzX-nIfd7aJtKNEK4V2e_XYq3DsepS/view?usp=drive_link)
+[[https://drive.google.com/file/d/1CArzX-nIfd7aJtKNEK4V2e_XYq3DsepS/view?usp=drive_link]](https://drive.google.com/file/d/1CArzX-nIfd7aJtKNEK4V2e_XYq3DsepS/view?usp=drive_link)
 
-**[Prometheus Installation]{.underline}**
+**[Prometheus Installation]**
 
 Prometheus is an open-source tool for monitoring and alerting
 applications.
 
 1)  You can go to Prometheus Download page to copy the link
 
-> [[https://github.com/prometheus/prometheus/releases/download/v2.47.0/prometheus-2.47.0.linux-amd64.tar.gz]{.underline}](https://github.com/prometheus/prometheus/releases/download/v2.47.0/prometheus-2.47.0.linux-amd64.tar.gz)
+> [[https://github.com/prometheus/prometheus/releases/download/v2.47.0/prometheus-2.47.0.linux-amd64.tar.gz]](https://github.com/prometheus/prometheus/releases/download/v2.47.0/prometheus-2.47.0.linux-amd64.tar.gz)
 
 Wget
-[[https://github.com/prometheus/prometheus/releases/download/v2.47.0/prometheus-2.47.0.linux-amd64.tar.gz]{.underline}](https://github.com/prometheus/prometheus/releases/download/v2.47.0/prometheus-2.47.0.linux-amd64.tar.gz)
+[[https://github.com/prometheus/prometheus/releases/download/v2.47.0/prometheus-2.47.0.linux-amd64.tar.gz]](https://github.com/prometheus/prometheus/releases/download/v2.47.0/prometheus-2.47.0.linux-amd64.tar.gz)
 
 2)  Untar Prometheus-2.47.0.linux-amd64.tar.gz
 
@@ -479,13 +479,13 @@ sudo systemctl start prometheus\
 sudo systemctl status prometheus
 
 Access Prometheus:
-[[http://54.151.137.203:9090]{.underline}](http://54.151.137.203:9090)
+[[http://54.151.137.203:9090]](http://54.151.137.203:9090)
 
 ![](./assets/image30.png)
 
 ![](./assets/image108.png)
 
-[[https://drive.google.com/file/d/19zGdgTebGTjw4K0aNnlg5UteO_qRA_Dr/view?usp=sharing]{.underline}](https://drive.google.com/file/d/19zGdgTebGTjw4K0aNnlg5UteO_qRA_Dr/view?usp=sharing)
+[[https://drive.google.com/file/d/19zGdgTebGTjw4K0aNnlg5UteO_qRA_Dr/view?usp=sharing]](https://drive.google.com/file/d/19zGdgTebGTjw4K0aNnlg5UteO_qRA_Dr/view?usp=sharing)
 
 8)  Proceed to modify the Prometheus.yml file so monitor specify the
     > targets
@@ -536,7 +536,7 @@ static_configs:
 sudo service prometheus restart\
 sudo service prometheus status
 
-**[Installing Node Exporter]{.underline}**
+**[Installing Node Exporter]**
 
 Node exporter is like a monitoring agent to be installed on all the
 servers. (For windows servers, you need to install windows_exporter)
@@ -546,7 +546,7 @@ servers. (For windows servers, you need to install windows_exporter)
 sudo useradd \--no-create-home node_exporter
 
 wget
-[[https://github.com/prometheus/node_exporter/releases/download/v1.6.1/node_exporter-1.6.1.linux-amd64.tar.gz]{.underline}](https://github.com/prometheus/node_exporter/releases/download/v1.6.1/node_exporter-1.6.1.linux-amd64.tar.gz)
+[[https://github.com/prometheus/node_exporter/releases/download/v1.6.1/node_exporter-1.6.1.linux-amd64.tar.gz]](https://github.com/prometheus/node_exporter/releases/download/v1.6.1/node_exporter-1.6.1.linux-amd64.tar.gz)
 
 2)  Untar and copy node exporter to /usr/local/bin/node_exporter
 
@@ -578,15 +578,15 @@ The two nodes will show up:
 
 ![](./assets/image73.png)
 
-**[Grafana Dashboards]{.underline}**
+**[Grafana Dashboards]**
 
-[[https://grafana.com/grafana/dashboards/]{.underline}](https://grafana.com/grafana/dashboards/)
+[[https://grafana.com/grafana/dashboards/]](https://grafana.com/grafana/dashboards/)
 
 Install node exporter
 
 Select dashboard id: 1860
 
-[[https://grafana.com/grafana/dashboards/1860-node-exporter-full/]{.underline}](https://grafana.com/grafana/dashboards/1860-node-exporter-full/)
+[[https://grafana.com/grafana/dashboards/1860-node-exporter-full/]](https://grafana.com/grafana/dashboards/1860-node-exporter-full/)
 
 ![](./assets/image102.png)
 
@@ -601,26 +601,26 @@ Select dashboard id: 1860
 **Adding Datasource** -- For our example case, we are looking at
 Prometheus. Use the same way to add CloudWatch Datasource
 
-[[https://drive.google.com/file/d/138Wmgkf2Rl5IV9tjEUQXZQzS814vR6J8/view?usp=sharing]{.underline}](https://drive.google.com/file/d/138Wmgkf2Rl5IV9tjEUQXZQzS814vR6J8/view?usp=sharing)
+[[https://drive.google.com/file/d/138Wmgkf2Rl5IV9tjEUQXZQzS814vR6J8/view?usp=sharing]](https://drive.google.com/file/d/138Wmgkf2Rl5IV9tjEUQXZQzS814vR6J8/view?usp=sharing)
 
 Filtering Cloudwatch Logs to display on dashboard:
 
-[[https://drive.google.com/file/d/1P3HK2pEN1bR-AH1rKEThc9h3AoiEfyo0/view?usp=sharing]{.underline}](https://drive.google.com/file/d/1P3HK2pEN1bR-AH1rKEThc9h3AoiEfyo0/view?usp=sharing)
+[[https://drive.google.com/file/d/1P3HK2pEN1bR-AH1rKEThc9h3AoiEfyo0/view?usp=sharing]](https://drive.google.com/file/d/1P3HK2pEN1bR-AH1rKEThc9h3AoiEfyo0/view?usp=sharing)
 
-**[Alert Rules Setup in Grafana Dashboard]{.underline}**
+**[Alert Rules Setup in Grafana Dashboard]**
 
 To receive notifications in Grafana, you need to set up alerting rules
 and configure notification channels. Grafana supports various
 notification channels like email, Slack, PagerDuty, and more. Here\'s a
 step-by-step guide on how to set up notifications in Grafana:
 
-**[Prerequisites:]{.underline}**
+**[Prerequisites:]**
 
 \- Ensure you have Grafana installed and configured.
 
 \- Create a dashboard with the metrics you want to monitor.
 
-**[Step 1: Configure Notification Channels]{.underline}**
+**[Step 1: Configure Notification Channels]**
 
 1\. Log in to your Grafana instance.
 
@@ -661,7 +661,7 @@ shown the successful connection:
 
 ![](./assets/image31.png)
 
-**[Step 2: Create Alerting Rules]{.underline}**
+**[Step 2: Create Alerting Rules]**
 
 1\. In Grafana, navigate to the dashboard where you want to set up
 alerts.![](./assets/image25.png)
@@ -710,7 +710,7 @@ period"(**=5m**).
 \*create new evaluation group by clicking " **+new evaluation group**
 "![](./assets/image47.png)![](./assets/image44.png)
 
-**[Step 3: Test the Alert]{.underline}**
+**[Step 3: Test the Alert]**
 
 To ensure that your alerting and notification setup is working
 correctly, you can test it:
@@ -735,7 +735,7 @@ channels (e.g., email, Slack).
 
 ![](./assets/image46.png)
 
-**[Step 4: Monitor and Adjust Alerts]{.underline}**
+**[Step 4: Monitor and Adjust Alerts]**
 
 After setting up alerts and notifications, monitor your Grafana
 dashboard for alert triggers. When an alert condition is met, Grafana
@@ -748,7 +748,7 @@ By following these steps, you can receive notifications in Grafana when
 specific conditions are met, allowing you to proactively monitor and
 respond to changes in your metrics and data.
 
-**[Webhook URL generation using Discord]{.underline}**
+**[Webhook URL generation using Discord]**
 
 1.  Register a Discord account.
 
@@ -792,7 +792,7 @@ respond to changes in your metrics and data.
 >
 > ![](./assets/image24.png)
 >
-> **[Things to improve:]{.underline}**
+> **[Things to improve:]**
 
 1.  Create Cloudwatch alerts from Grafana dashboard directly instead of
     > using SES.
