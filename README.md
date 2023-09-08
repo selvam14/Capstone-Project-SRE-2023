@@ -116,8 +116,12 @@ aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS
 
 ## Create a Repository in Amazon Elastic Container Registry (ECR)
 1. Next, you need to create a repository in Amazon Elastic Container Registry (ECR) where you can store your Docker image.
+2. 
+![ECR1](./assets/ECR1.png)
 
-2. Enter a unique name for your repository in the ECR console.
+3. Enter a unique name for your repository in the ECR console.
+
+![ECR2](./assets/ECR2.png)
 
 ## Tag Docker Image with Amazon Elastic Container Registry
 After creating the repository, you'll need to tag your Docker image with the ECR repository URL and a specific tag (e.g., "latest"). This is necessary for pushing the image to ECR.
@@ -134,6 +138,9 @@ docker push 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/movie-app-image:la
 
 ## Terraform Configuration for Amazon Elastic Container Service (ECS)
 The deployment of your container to Amazon Elastic Container Service (ECS) will be orchestrated using Terraform. You will need to create a Terraform configuration file in your Visual Studio Code (VS Code) environment. Below is the Terraform code for configuring your ECS setup:
+
+![terraform1](./assets/terraform1.png)
+
 ```Terraform.tf
 provider "aws" {
   region = "ap-southeast-1" # Modify this with your desired AWS region
@@ -200,3 +207,81 @@ Commands used:
 - terraform init
 - terraform plan
 - terraform apply
+
+![terraform2](./assets/terraform2.png)
+
+# GitHub Actions for Automation
+
+The deployment of your application using Terraform scripts will be automated via GitHub Actions.
+
+## Setting Up GitHub Actions Workflow
+
+1. Inside your repository, create a `.github/workflows` directory and add a YAML file for your workflow. Name it something like `deploy-movie-app.yml`.
+
+   ```yaml
+   name: Deploy Movie App
+   run-name: ${{ github.actor }} is doing CICD to deploy AWS ECS
+
+   on:
+     push:
+       branches:
+         - main
+
+   jobs:
+     deploy:
+       name: Deploy Movie App
+       runs-on: ubuntu-latest
+
+       steps:
+         - name: Checkout
+           uses: actions/checkout@v3
+
+         - name: Configure AWS credentials
+           uses: aws-actions/configure-aws-credentials@v1
+           with:
+             aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+             aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+             aws-region: ap-southeast-1
+
+         - name: Login to Amazon ECR
+           id: login-ecr
+           uses: aws-actions/amazon-ecr-login@v1
+
+         - name: Build, tag, and push image to Amazon ECR
+           id: build-image
+           env:
+             ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+             ECR_REPOSITORY: movie-app-weiheng-test
+             IMAGE_TAG: latest
+           run: |
+             # Build a Docker container and
+             # push it to ECR so that it can
+             # be deployed to ECS.
+             docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+             docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+             echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+
+         - name: Initialize Terraform
+           run: terraform init
+           working-directory: .
+
+         - name: Plan Terraform changes
+           run: terraform plan
+           working-directory: .
+
+         - name: Apply Terraform changes
+           run: terraform apply -auto-approve
+           working-directory: .
+      ```
+
+     Create secrets in your GitHub repository to store sensitive data like AWS access keys. Name them AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.
+
+## Running the GitHub Actions Workflow
+To trigger the GitHub Actions workflow, use the following commands:
+
+```
+git add .
+git commit -m 'Initial commit'
+git push
+```
+Inside GitHub Actions, you can monitor the workflow's progress, debug any errors, and ensure that all steps are executed successfully.
