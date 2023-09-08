@@ -322,8 +322,7 @@ Go into Cloudwatch service, we can see some startup logs have been generated:
 
 **To create 3 x EC2 instances**
 
-> ![](./assets/image96.png){width="4.269444444444445in"
-> height="3.747916666666667in"}
+> ![](./assets/image96.png)
 >
 > **[Grafana Installation]{.underline}**
 >
@@ -374,29 +373,24 @@ sudo systemctl status grafana-server
 sudo systemctl enable Grafana-server.service
 
 Navigate to the EC2 instance to check the public IP
-address![](./assets/image120.png){width="7.690972222222222in"
-height="3.529861111111111in"}
+address![](./assets/image120.png)
 
 The default port for Grafana is 3000. Ensure port 3000 is in the inbound
 rules
 
-![](./assets/image56.png){width="6.624576771653543in"
-height="4.26494750656168in"}
+![](./assets/image56.png)
 
-![](./assets/image106.png){width="6.268055555555556in"
-height="2.3444444444444446in"}
+![](./assets/image106.png)
 
 Select Custom TCP \> Port 3000 \> 0.0.0.0/0
 
-![](./assets/image100.png){width="6.268055555555556in"
-height="0.28402777777777777in"}
+![](./assets/image100.png)
 
 Access the public IP with the port
 
 [[http://54.151.137.203:3000]{.underline}](http://54.151.137.203:3000)
 
-![](./assets/image49.png){width="7.03515091863517in"
-height="3.9254560367454068in"}
+![](./assets/image49.png)
 
 Enter the default credentials if you are just setting it up. Otherwise,
 please check the credentials in your centralized password management
@@ -428,13 +422,10 @@ cd prometheus-2.47.0.linux-amd64
 
 ./prometheus
 
-![](./assets/image59.png){width="6.929278215223097in"
-height="2.567195975503062in"}
-
+![](./assets/image59.png)
 Do note that you need to add port 9090 from inbound rules
 
-![](./assets/image12.png){width="6.798496281714786in"
-height="0.16645997375328084in"}
+![](./assets/image12.png)
 
 5)  Create the following file /etc/system/system/Prometheus.service so
     > that if the server restarts, the service will be up and running
@@ -490,19 +481,16 @@ sudo systemctl status prometheus
 Access Prometheus:
 [[http://54.151.137.203:9090]{.underline}](http://54.151.137.203:9090)
 
-![](./assets/image30.png){width="6.268055555555556in"
-height="2.129870953630796in"}
+![](./assets/image30.png)
 
-![](./assets/image108.png){width="6.268055555555556in"
-height="2.05625in"}
+![](./assets/image108.png)
 
 [[https://drive.google.com/file/d/19zGdgTebGTjw4K0aNnlg5UteO_qRA_Dr/view?usp=sharing]{.underline}](https://drive.google.com/file/d/19zGdgTebGTjw4K0aNnlg5UteO_qRA_Dr/view?usp=sharing)
 
 8)  Proceed to modify the Prometheus.yml file so monitor specify the
     > targets
 
-![](./assets/image13.png){width="7.632060367454068in"
-height="0.5064927821522309in"}
+![](./assets/image13.png)
 
 global:
 
@@ -584,13 +572,11 @@ sudo systemctl status node-exporter
 
 At this point, do add port 9100 from inbound rules
 
-![](./assets/image83.png){width="7.578934820647419in"
-height="0.1948053368328959in"}
+![](./assets/image83.png)
 
 The two nodes will show up:
 
-![](./assets/image73.png){width="6.268055555555556in"
-height="1.8097222222222222in"}
+![](./assets/image73.png)
 
 **[Grafana Dashboards]{.underline}**
 
@@ -602,20 +588,15 @@ Select dashboard id: 1860
 
 [[https://grafana.com/grafana/dashboards/1860-node-exporter-full/]{.underline}](https://grafana.com/grafana/dashboards/1860-node-exporter-full/)
 
-![](./assets/image102.png){width="6.268055555555556in"
-height="3.3368055555555554in"}
+![](./assets/image102.png)
 
-![](./assets/image75.png){width="6.268055555555556in"
-height="2.6069444444444443in"}
+![](./assets/image75.png)
 
-![](./assets/image77.png){width="6.268055555555556in"
-height="5.40625in"}
+![](./assets/image77.png)
 
-![](./assets/image81.png){width="6.268055555555556in"
-height="3.076388888888889in"}
+![](./assets/image81.png)
 
-![](./assets/image82.png){width="6.268055555555556in"
-height="2.5034722222222223in"}
+![](./assets/image82.png)
 
 **Adding Datasource** -- For our example case, we are looking at
 Prometheus. Use the same way to add CloudWatch Datasource
@@ -644,27 +625,23 @@ step-by-step guide on how to set up notifications in Grafana:
 1\. Log in to your Grafana instance.
 
 2\. Click on the three line icon
-(![](./assets/image97.png){width="1.211007217847769in"
-height="0.31868547681539805in"}) in the left sidebar to access the
+(![](./assets/image97.png)) in the left sidebar to access the
 \"Configuration\" menu.
 
 3\. Under \"Alerting,\" click on \"Contact points.\"
 
-![](./assets/image35.png){width="3.3621423884514434in"
-height="4.738767497812773in"}
+![](./assets/image35.png)
 
 4\. Click the \"Add contact point\" button to create a new notification
 channel.
 
-![](./assets/image18.png){width="6.079001531058617in"
-height="1.6302088801399826in"}
+![](./assets/image18.png)
 
 5\. Name the contact points Select the type of notification channel you
 want to set up (e.g., Email, Slack, or others). Each channel type has
 its own configuration options.
 
-![](./assets/image5.png){width="6.267716535433071in"
-height="2.7222222222222223in"}
+![](./assets/image5.png)
 
 **In our project, we selected Discord.**
 
@@ -674,71 +651,56 @@ provide the SMTP server details and email addresses. If you\'re setting
 up Slack/ Discord notifications, you\'ll need to provide a Slack/Discord
 webhook URL.
 
-![](./assets/image66.png){width="6.267716535433071in"
-height="3.2222222222222223in"}
+![](./assets/image66.png)
 
 7\. Save the notification channel configuration by clicking " save
 contact point"
-![](./assets/image11.png){width="1.4322922134733158in"
-height="0.43047025371828523in"} after click on the " test
-"![](./assets/image1.png){width="0.7517716535433071in"
-height="0.3069728783902012in"} to verify the connection is ok. Following
+![](./assets/image11.png) after click on the " test
+"![](./assets/image1.png) to verify the connection is ok. Following
 shown the successful connection:
 
-![](./assets/image31.png){width="6.267716535433071in"
-height="1.625in"}
+![](./assets/image31.png)
 
 **[Step 2: Create Alerting Rules]{.underline}**
 
 1\. In Grafana, navigate to the dashboard where you want to set up
-alerts.![](./assets/image25.png){width="4.057292213473316in"
-height="2.2566721347331584in"}
+alerts.![](./assets/image25.png)
 
 2\. Select which panel to set the rules.
 
-![](./assets/image29.png){width="6.267716535433071in"
-height="1.4444444444444444in"}
+![](./assets/image29.png)
 
 3\. Click on "three dots" at the upper right corner.
 
-![](./assets/image40.png){width="6.267716535433071in"
-height="2.4444444444444446in"}
+![](./assets/image40.png)
 
 4\. Click on the "edit" button.
 
-![](./assets/image42.png){width="6.267716535433071in"
-height="2.625in"}
+![](./assets/image42.png)
 
 5\. Select " Alert".
 
-![](./assets/image78.png){width="6.267716535433071in"
-height="2.9166666666666665in"}
+![](./assets/image78.png)
 
 6\. Select " Create alert rule from this panel"
 
-![](./assets/image39.png){width="6.267716535433071in"
-height="1.2083333333333333in"}
+![](./assets/image39.png)
 
 7\. Name the alert rules.
 
-![](./assets/image7.png){width="5.255208880139983in"
-height="2.627603893263342in"}
+![](./assets/image7.png)
 
 8\. Determine the query and alert condition.
 
-![](./assets/image15.png){width="6.267716535433071in"
-height="3.013888888888889in"}
+![](./assets/image15.png)
 
 9\. Determine the alert expression and set it as alert condition.
 
-![](./assets/image19.png){width="6.267716535433071in"
-height="1.3055555555555556in"}
+![](./assets/image19.png)
 
 10\. Click on "Set as alert condition"
-![](./assets/image34.png){width="1.3346948818897637in"
-height="0.3211832895888014in"}, green words alert condition
-![](./assets/image84.png){width="1.2760422134733158in"
-height="0.25890748031496064in"} will appear.
+![](./assets/image34.png), green words alert condition
+![](./assets/image84.png) will appear.
 
 11\. Set alert evaluation behaviour. Select "Folder"
 (**Capstone-Project-Dashboard**) and "Evaluation
@@ -746,9 +708,7 @@ group"(**Capstone-Project-Dashboard**), followed by "pending
 period"(**=5m**).
 
 \*create new evaluation group by clicking " **+new evaluation group**
-"![](./assets/image47.png){width="1.1534886264216972in"
-height="0.23940288713910762in"}![](./assets/image44.png){width="5.109375546806649in"
-height="2.035766622922135in"}
+"![](./assets/image47.png)![](./assets/image44.png)
 
 **[Step 3: Test the Alert]{.underline}**
 
@@ -760,24 +720,20 @@ under Configuration notifications
 1\. Click the \"preview routing" to see the notification policy is
 routed to the selected contact points.
 
-![](./assets/image6.png){width="6.267716535433071in"
-height="2.3333333333333335in"}
+![](./assets/image6.png)
 
 2\. Click on see details.
 
-![](./assets/image20.png){width="6.267716535433071in"
-height="2.3333333333333335in"}
+![](./assets/image20.png)
 
 Routing details can be shown as below (example)
 
-![](./assets/image54.png){width="6.25in"
-height="3.0416666666666665in"}
+![](./assets/image54.png)
 
 2\. Verify that you receive notifications through the configured
 channels (e.g., email, Slack).
 
-![](./assets/image46.png){width="6.267716535433071in"
-height="2.125in"}
+![](./assets/image46.png)
 
 **[Step 4: Monitor and Adjust Alerts]{.underline}**
 
@@ -800,51 +756,41 @@ respond to changes in your metrics and data.
 
 3.  Click on "plus" button to add the server channel.
 
-> ![](./assets/image27.png){width="1.517182852143482in"
-> height="3.8861187664041994in"}
+> ![](./assets/image27.png)
 
 4.  Select "Create My Own".
 
-> ![](./assets/image65.png){width="2.0883541119860016in"
-> height="2.766032370953631in"}
+> ![](./assets/image65.png)
 
 5.  Select " For me and my friends"
 
-> ![](./assets/image33.png){width="3.7343755468066493in"
-> height="3.313692038495188in"}
+> ![](./assets/image33.png)
 
 6.  Name the server.
 
-> ![](./assets/image2.png){width="4.744792213473316in"
-> height="4.295533683289589in"}
+> ![](./assets/image2.png)
 
 7.  Click on the "gear button" to go to the setting.
 
-> ![](./assets/image51.png){width="3.6041666666666665in"
-> height="4.78125in"}
+> ![](./assets/image51.png)
 
 8.  Select "Integration" at the left panel.
 
-> ![](./assets/image32.png){width="6.267716535433071in"
-> height="2.2222222222222223in"}
+> ![](./assets/image32.png){
 
 9.  Select "View Webhook" to extract the url.
 
-> ![](./assets/image41.png){width="6.267716535433071in"
-> height="1.8333333333333333in"}
+> ![](./assets/image41.png)
 
 10. Click on the arrow to view the Bot details.
 
-> ![](./assets/image28.png){width="6.267716535433071in"
-> height="2.9305555555555554in"}
+> ![](./assets/image28.png)
 
 11. Copy the url into the contact point configuration.
 
-> ![](./assets/image94.png){width="6.267716535433071in"
-> height="3.3194444444444446in"}
+> ![](./assets/image94.png)
 >
-> ![](./assets/image24.png){width="6.267716535433071in"
-> height="3.0694444444444446in"}
+> ![](./assets/image24.png)
 >
 > **[Things to improve:]{.underline}**
 
