@@ -685,59 +685,59 @@ height="0.43047025371828523in"} after click on the " test
 height="0.3069728783902012in"} to verify the connection is ok. Following
 shown the successful connection:
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image31.png){width="6.267716535433071in"
+![](./assets/image31.png){width="6.267716535433071in"
 height="1.625in"}
 
 **[Step 2: Create Alerting Rules]{.underline}**
 
 1\. In Grafana, navigate to the dashboard where you want to set up
-alerts.![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image25.png){width="4.057292213473316in"
+alerts.![](./assets/image25.png){width="4.057292213473316in"
 height="2.2566721347331584in"}
 
 2\. Select which panel to set the rules.
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image29.png){width="6.267716535433071in"
+![](./assets/image29.png){width="6.267716535433071in"
 height="1.4444444444444444in"}
 
 3\. Click on "three dots" at the upper right corner.
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image40.png){width="6.267716535433071in"
+![](./assets/image40.png){width="6.267716535433071in"
 height="2.4444444444444446in"}
 
 4\. Click on the "edit" button.
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image42.png){width="6.267716535433071in"
+![](./assets/image42.png){width="6.267716535433071in"
 height="2.625in"}
 
 5\. Select " Alert".
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image78.png){width="6.267716535433071in"
+![](./assets/image78.png){width="6.267716535433071in"
 height="2.9166666666666665in"}
 
 6\. Select " Create alert rule from this panel"
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image39.png){width="6.267716535433071in"
+![](./assets/image39.png){width="6.267716535433071in"
 height="1.2083333333333333in"}
 
 7\. Name the alert rules.
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image7.png){width="5.255208880139983in"
+![](./assets/image7.png){width="5.255208880139983in"
 height="2.627603893263342in"}
 
 8\. Determine the query and alert condition.
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image15.png){width="6.267716535433071in"
+![](./assets/image15.png){width="6.267716535433071in"
 height="3.013888888888889in"}
 
 9\. Determine the alert expression and set it as alert condition.
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image19.png){width="6.267716535433071in"
+![](./assets/image19.png){width="6.267716535433071in"
 height="1.3055555555555556in"}
 
 10\. Click on "Set as alert condition"
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image34.png){width="1.3346948818897637in"
+![](./assets/image34.png){width="1.3346948818897637in"
 height="0.3211832895888014in"}, green words alert condition
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image84.png){width="1.2760422134733158in"
+![](./assets/image84.png){width="1.2760422134733158in"
 height="0.25890748031496064in"} will appear.
 
 11\. Set alert evaluation behaviour. Select "Folder"
@@ -746,8 +746,8 @@ group"(**Capstone-Project-Dashboard**), followed by "pending
 period"(**=5m**).
 
 \*create new evaluation group by clicking " **+new evaluation group**
-"![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image47.png){width="1.1534886264216972in"
-height="0.23940288713910762in"}![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image44.png){width="5.109375546806649in"
+"![](./assets/image47.png){width="1.1534886264216972in"
+height="0.23940288713910762in"}![](./assets/image44.png){width="5.109375546806649in"
 height="2.035766622922135in"}
 
 **[Step 3: Test the Alert]{.underline}**
@@ -760,23 +760,23 @@ under Configuration notifications
 1\. Click the \"preview routing" to see the notification policy is
 routed to the selected contact points.
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image6.png){width="6.267716535433071in"
+![](./assets/image6.png){width="6.267716535433071in"
 height="2.3333333333333335in"}
 
 2\. Click on see details.
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image20.png){width="6.267716535433071in"
+![](./assets/image20.png){width="6.267716535433071in"
 height="2.3333333333333335in"}
 
 Routing details can be shown as below (example)
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image54.png){width="6.25in"
+![](./assets/image54.png){width="6.25in"
 height="3.0416666666666665in"}
 
 2\. Verify that you receive notifications through the configured
 channels (e.g., email, Slack).
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image46.png){width="6.267716535433071in"
+![](./assets/image46.png){width="6.267716535433071in"
 height="2.125in"}
 
 **[Step 4: Monitor and Adjust Alerts]{.underline}**
@@ -800,50 +800,50 @@ respond to changes in your metrics and data.
 
 3.  Click on "plus" button to add the server channel.
 
-> ![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image27.png){width="1.517182852143482in"
+> ![](./assets/image27.png){width="1.517182852143482in"
 > height="3.8861187664041994in"}
 
 4.  Select "Create My Own".
 
-> ![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image65.png){width="2.0883541119860016in"
+> ![](./assets/image65.png){width="2.0883541119860016in"
 > height="2.766032370953631in"}
 
 5.  Select " For me and my friends"
 
-> ![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image33.png){width="3.7343755468066493in"
+> ![](./assets/image33.png){width="3.7343755468066493in"
 > height="3.313692038495188in"}
 
 6.  Name the server.
 
-> ![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image2.png){width="4.744792213473316in"
+> ![](./assets/image2.png){width="4.744792213473316in"
 > height="4.295533683289589in"}
 
 7.  Click on the "gear button" to go to the setting.
 
-> ![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image51.png){width="3.6041666666666665in"
+> ![](./assets/image51.png){width="3.6041666666666665in"
 > height="4.78125in"}
 
 8.  Select "Integration" at the left panel.
 
-> ![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image32.png){width="6.267716535433071in"
+> ![](./assets/image32.png){width="6.267716535433071in"
 > height="2.2222222222222223in"}
 
 9.  Select "View Webhook" to extract the url.
 
-> ![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image41.png){width="6.267716535433071in"
+> ![](./assets/image41.png){width="6.267716535433071in"
 > height="1.8333333333333333in"}
 
 10. Click on the arrow to view the Bot details.
 
-> ![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image28.png){width="6.267716535433071in"
+> ![](./assets/image28.png){width="6.267716535433071in"
 > height="2.9305555555555554in"}
 
 11. Copy the url into the contact point configuration.
 
-> ![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image94.png){width="6.267716535433071in"
+> ![](./assets/image94.png){width="6.267716535433071in"
 > height="3.3194444444444446in"}
 >
-> ![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image24.png){width="6.267716535433071in"
+> ![](./assets/image24.png){width="6.267716535433071in"
 > height="3.0694444444444446in"}
 >
 > **[Things to improve:]{.underline}**
