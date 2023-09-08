@@ -322,7 +322,7 @@ Go into Cloudwatch service, we can see some startup logs have been generated:
 
 **To create 3 x EC2 instances**
 
-> ![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image96.png){width="4.269444444444445in"
+> ![](./assets/image96.png){width="4.269444444444445in"
 > height="3.747916666666667in"}
 >
 > **[Grafana Installation]{.underline}**
@@ -374,28 +374,28 @@ sudo systemctl status grafana-server
 sudo systemctl enable Grafana-server.service
 
 Navigate to the EC2 instance to check the public IP
-address![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image120.png){width="7.690972222222222in"
+address![](./assets/image120.png){width="7.690972222222222in"
 height="3.529861111111111in"}
 
 The default port for Grafana is 3000. Ensure port 3000 is in the inbound
 rules
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image56.png){width="6.624576771653543in"
+![](./assets/image56.png){width="6.624576771653543in"
 height="4.26494750656168in"}
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image106.png){width="6.268055555555556in"
+![](./assets/image106.png){width="6.268055555555556in"
 height="2.3444444444444446in"}
 
 Select Custom TCP \> Port 3000 \> 0.0.0.0/0
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image100.png){width="6.268055555555556in"
+![](./assets/image100.png){width="6.268055555555556in"
 height="0.28402777777777777in"}
 
 Access the public IP with the port
 
 [[http://54.151.137.203:3000]{.underline}](http://54.151.137.203:3000)
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image49.png){width="7.03515091863517in"
+![](./assets/image49.png){width="7.03515091863517in"
 height="3.9254560367454068in"}
 
 Enter the default credentials if you are just setting it up. Otherwise,
@@ -428,12 +428,12 @@ cd prometheus-2.47.0.linux-amd64
 
 ./prometheus
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image59.png){width="6.929278215223097in"
+![](./assets/image59.png){width="6.929278215223097in"
 height="2.567195975503062in"}
 
 Do note that you need to add port 9090 from inbound rules
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image12.png){width="6.798496281714786in"
+![](./assets/image12.png){width="6.798496281714786in"
 height="0.16645997375328084in"}
 
 5)  Create the following file /etc/system/system/Prometheus.service so
@@ -490,10 +490,10 @@ sudo systemctl status prometheus
 Access Prometheus:
 [[http://54.151.137.203:9090]{.underline}](http://54.151.137.203:9090)
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image30.png){width="6.268055555555556in"
+![](./assets/image30.png){width="6.268055555555556in"
 height="2.129870953630796in"}
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image108.png){width="6.268055555555556in"
+![](./assets/image108.png){width="6.268055555555556in"
 height="2.05625in"}
 
 [[https://drive.google.com/file/d/19zGdgTebGTjw4K0aNnlg5UteO_qRA_Dr/view?usp=sharing]{.underline}](https://drive.google.com/file/d/19zGdgTebGTjw4K0aNnlg5UteO_qRA_Dr/view?usp=sharing)
@@ -501,7 +501,7 @@ height="2.05625in"}
 8)  Proceed to modify the Prometheus.yml file so monitor specify the
     > targets
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image13.png){width="7.632060367454068in"
+![](./assets/image13.png){width="7.632060367454068in"
 height="0.5064927821522309in"}
 
 global:
@@ -584,12 +584,12 @@ sudo systemctl status node-exporter
 
 At this point, do add port 9100 from inbound rules
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image83.png){width="7.578934820647419in"
+![](./assets/image83.png){width="7.578934820647419in"
 height="0.1948053368328959in"}
 
 The two nodes will show up:
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image73.png){width="6.268055555555556in"
+![](./assets/image73.png){width="6.268055555555556in"
 height="1.8097222222222222in"}
 
 **[Grafana Dashboards]{.underline}**
@@ -602,19 +602,19 @@ Select dashboard id: 1860
 
 [[https://grafana.com/grafana/dashboards/1860-node-exporter-full/]{.underline}](https://grafana.com/grafana/dashboards/1860-node-exporter-full/)
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image102.png){width="6.268055555555556in"
+![](./assets/image102.png){width="6.268055555555556in"
 height="3.3368055555555554in"}
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image75.png){width="6.268055555555556in"
+![](./assets/image75.png){width="6.268055555555556in"
 height="2.6069444444444443in"}
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image77.png){width="6.268055555555556in"
+![](./assets/image77.png){width="6.268055555555556in"
 height="5.40625in"}
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image81.png){width="6.268055555555556in"
+![](./assets/image81.png){width="6.268055555555556in"
 height="3.076388888888889in"}
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image82.png){width="6.268055555555556in"
+![](./assets/image82.png){width="6.268055555555556in"
 height="2.5034722222222223in"}
 
 **Adding Datasource** -- For our example case, we are looking at
@@ -644,26 +644,26 @@ step-by-step guide on how to set up notifications in Grafana:
 1\. Log in to your Grafana instance.
 
 2\. Click on the three line icon
-(![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image97.png){width="1.211007217847769in"
+(![](./assets/image97.png){width="1.211007217847769in"
 height="0.31868547681539805in"}) in the left sidebar to access the
 \"Configuration\" menu.
 
 3\. Under \"Alerting,\" click on \"Contact points.\"
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image35.png){width="3.3621423884514434in"
+![](./assets/image35.png){width="3.3621423884514434in"
 height="4.738767497812773in"}
 
 4\. Click the \"Add contact point\" button to create a new notification
 channel.
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image18.png){width="6.079001531058617in"
+![](./assets/image18.png){width="6.079001531058617in"
 height="1.6302088801399826in"}
 
 5\. Name the contact points Select the type of notification channel you
 want to set up (e.g., Email, Slack, or others). Each channel type has
 its own configuration options.
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image5.png){width="6.267716535433071in"
+![](./assets/image5.png){width="6.267716535433071in"
 height="2.7222222222222223in"}
 
 **In our project, we selected Discord.**
@@ -674,14 +674,14 @@ provide the SMTP server details and email addresses. If you\'re setting
 up Slack/ Discord notifications, you\'ll need to provide a Slack/Discord
 webhook URL.
 
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image66.png){width="6.267716535433071in"
+![](./assets/image66.png){width="6.267716535433071in"
 height="3.2222222222222223in"}
 
 7\. Save the notification channel configuration by clicking " save
 contact point"
-![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image11.png){width="1.4322922134733158in"
+![](./assets/image11.png){width="1.4322922134733158in"
 height="0.43047025371828523in"} after click on the " test
-"![](vertopal_7bd178d0044145679de8618d7ad000ae/media/image1.png){width="0.7517716535433071in"
+"![](./assets/image1.png){width="0.7517716535433071in"
 height="0.3069728783902012in"} to verify the connection is ok. Following
 shown the successful connection:
 
