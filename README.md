@@ -776,7 +776,7 @@ respond to changes in your metrics and data.
 
 8.  Select "Integration" at the left panel.
 
-> ![](./assets/image32.png){
+> ![](./assets/image32.png)
 
 9.  Select "View Webhook" to extract the url.
 
@@ -795,9 +795,9 @@ respond to changes in your metrics and data.
 > **[Things to improve:]**
 
 1.  Create Cloudwatch alerts from Grafana dashboard directly instead of
-    > using SES.
+    using SES.
 
 2.  Create better customised dashboards to monitor the application.
 
 3.  Automate creation of incident tickets directly in Jira when alert is
-    > triggered.
+    triggered.
