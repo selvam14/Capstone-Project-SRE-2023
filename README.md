@@ -288,6 +288,27 @@ git commit -m 'Initial commit'
 git push
 ```
 Inside GitHub Actions, you can monitor the workflow's progress, debug any errors, and ensure that all steps are executed successfully.
-![githubactions-jobrunning](./assets/githubactions-jobrunning  .png)
+![githubactions-jobrunning](./assets/githubactions-jobrunning.png)
 
 ![github_actions_workflow runs](./assets/github_actions_workflow%20runs.png)
+
+## Verifying the Deployment on AWS ECS
+
+1. Open the AWS Management Console and navigate to **Elastic Container Service (ECS)**.
+
+2. In the ECS dashboard, find and click on the `movie-app-image-cluster`. This will take you to the cluster details page.
+
+3. On the cluster details page, locate and click on the service name, which should be `movie-app-image-service`.
+
+4. Next, click on the **Tasks** tab to view the list of tasks.
+
+5. Locate the specific task related to your deployment and click on it.
+
+6. In the task details, go to the **Network Bindings** tab to access the external link.
+
+7. The movie application will be accessible through the external link. You can access it by clicking on the provided link, which should look something like: [http://13.214.25.176:80](http://13.214.25.176:80).
+
+
+## Cloudwatch logging:
+
+Go into Cloudwatch service, we can see some startup logs have been generated:
