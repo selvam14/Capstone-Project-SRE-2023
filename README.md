@@ -40,8 +40,10 @@ The application team recently worked with an entertainment company specializing 
 
 The application was containerized using Docker and deployed to AWS Elastic Container Service.
 
+![containerisation_workflow](./assets/containerisation_workflow.png)
 ### Cloning the Repository to Your Local Environment
 
+![git-clone](./assets/git_clone.png)
 ```shell
 git clone https://github.com/Sule-Ss/movie-app-with-react.git
 cd movie-app-with-react
@@ -49,7 +51,7 @@ code .
 ```
 
 ### Create Dockerfile
-
+![dockerfile-sample](./assets/create-dockerfile1.png)
 ```Dockerfile
 # Use a base image
 FROM node:14 as build
