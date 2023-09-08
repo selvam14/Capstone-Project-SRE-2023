@@ -125,3 +125,74 @@ After creating the repository, you'll need to tag your Docker image with the ECR
 docker tag movie-app-image:latest 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/movie-app-image:latest
 ```
 (Replace "movie-app-image" with your image name and "latest" with your desired tag if different.)
+
+## Push Image to Amazon Elastic Container Registry (ECR)
+Now that your Docker image is tagged correctly, you can push it to Amazon Elastic Container Registry (ECR) using the following command:
+```
+docker push 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/movie-app-image:latest
+```
+
+## Terraform Configuration for Amazon Elastic Container Service (ECS)
+The deployment of your container to Amazon Elastic Container Service (ECS) will be orchestrated using Terraform. You will need to create a Terraform configuration file in your Visual Studio Code (VS Code) environment. Below is the Terraform code for configuring your ECS setup:
+```
+provider "aws" {
+  region = "ap-southeast-1" # Modify this with your desired AWS region
+}
+
+locals {
+  application_name = "movie-app-image" # Replace with your application name
+}
+
+resource "aws_ecs_task_definition" "my_task_definition" {
+  family                   = local.application_name
+  network_mode             = "awsvpc"
+  requires_compatibilities = ["FARGATE"]
+  execution_role_arn      = "arn:aws:iam::255945442255:role/ecsTaskExecutionRole" # Replace with your execution role ARN
+
+  container_definitions = jsonencode([
+    {
+      name  = local.application_name
+      image = "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/movie-app-image:latest" # Modify with your ECR image URL
+      portMappings = [
+        {
+          containerPort = 8080
+          hostPort      = 8080
+          protocol      = "tcp"
+        }
+      ]
+      essential = true
+    }
+  ])
+
+  cpu    = "512"
+  memory = "1024"
+}
+
+resource "aws_ecs_cluster" "my_ecs_cluster" {
+  name = "${local.application_name}-cluster"
+}
+
+resource "aws_ecs_service" "my_ecs_service" {
+  name            = "${local.application_name}-service"
+  cluster         = aws_ecs_cluster.my_ecs_cluster.id
+  task_definition = aws_ecs_task_definition.my_task_definition.arn
+  launch_type     = "FARGATE"
+
+  network_configuration {
+    subnets          = ["subnet-04056e91a09a5b4bf", "subnet-bea677f6", "subnet-29ed7170"] # Modify with your subnet IDs
+    assign_public_ip = true
+    security_groups = ["sg-b4db57fc"] # Modify with your security group IDs
+  }
+
+  scheduling_strategy = "REPLICA"
+  desired_count       = 1
+  platform_version    = "LATEST"
+  deployment_controller {
+    type = "ECS"
+  }
+  deployment_maximum_percent = 200
+  deployment_minimum_healthy_percent = 100
+  enable_ecs_managed_tags = true
+}
+```
+
