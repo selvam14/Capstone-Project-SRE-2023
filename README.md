@@ -84,3 +84,32 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
+## Docker Commands
+1. Open Docker Desktop and sign in.
+
+2. Go back to your VS Code.
+
+3. Build the Docker image with a tag (name) for the image:
+```
+docker build -t movie-app-image .
+```
+(The -t flag is used to tag or name the Docker image that is being built.)
+
+4. Run the Docker container, mapping port 8080 on the host to port 80 in the container, and run it in detached mode:
+```
+docker run -p 8080:80 -d movie-app-image
+```
+(The -p flag is used to map or publish ports between the host and the container. For example, port 80 within the container will be mapped to port 8080 on the host machine. The -d flag is used to run a container in detached mode, which means the container runs in the background as a daemon process.)
+
+5. Once you can deploy locally, you can proceed to deploy it on Amazon Elastic Container Service (ECS).
+
+6. Build the Docker image again with the same tag (if needed) to ensure you have the latest image locally:
+```
+docker build -t movie-app-image .
+```
+7. The Docker image will be pushed to Amazon Elastic Container Registry (ECR). Ensure you are signed in to your AWS account via a web browser.
+
+8. Obtain an ECR login password for the specified AWS region and log in to ECR using Docker:
+```
+aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com
+```
