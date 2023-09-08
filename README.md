@@ -134,7 +134,7 @@ docker push 255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/movie-app-image:la
 
 ## Terraform Configuration for Amazon Elastic Container Service (ECS)
 The deployment of your container to Amazon Elastic Container Service (ECS) will be orchestrated using Terraform. You will need to create a Terraform configuration file in your Visual Studio Code (VS Code) environment. Below is the Terraform code for configuring your ECS setup:
-```
+```Terraform.tf
 provider "aws" {
   region = "ap-southeast-1" # Modify this with your desired AWS region
 }
@@ -196,3 +196,7 @@ resource "aws_ecs_service" "my_ecs_service" {
 }
 ```
 
+Commands used:
+- terraform init
+- terraform plan
+- terraform apply
