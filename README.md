@@ -792,7 +792,7 @@ respond to changes in your metrics and data.
 > ![](./assets/image24.png)
 >
 
-
+```
 **[Things to improve:]**
 
 1.  Create Cloudwatch alerts from Grafana dashboard directly instead of
@@ -802,3 +802,4 @@ respond to changes in your metrics and data.
 
 3.  Automate creation of incident tickets directly in Jira when alert is
     triggered.
+```
