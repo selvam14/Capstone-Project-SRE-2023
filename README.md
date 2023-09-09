@@ -793,11 +793,13 @@ respond to changes in your metrics and data.
 >
 
 
-**[Things to improve:]**
 
-|1.  Create Cloudwatch alerts from Grafana dashboard directly instead of using SES. |
+## Things to Improve:
 
-|2.  Create better customised dashboards to monitor the application. |
+1. **Create Cloudwatch Alerts**: Consider creating CloudWatch alerts directly from the Grafana dashboard instead of relying on SES (Simple Email Service) for notifications.
 
-|3.  Automate creation of incident tickets directly in Jira when alert is triggered. |
+2. **Customized Dashboards**: Design and implement more customized dashboards to enhance the monitoring of the application. Tailor these dashboards to display relevant metrics and key performance indicators (KPIs).
+
+3. **Automate Incident Tickets**: Explore automation options for incident ticket creation in Jira when alerts are triggered. This automation can streamline the incident management process and improve response times.
+
 
