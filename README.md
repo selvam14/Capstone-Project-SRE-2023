@@ -792,14 +792,12 @@ respond to changes in your metrics and data.
 > ![](./assets/image24.png)
 >
 
-```
+
 **[Things to improve:]**
 
-1.  Create Cloudwatch alerts from Grafana dashboard directly instead of
-    using SES.
+|1.  Create Cloudwatch alerts from Grafana dashboard directly instead of using SES. |
 
-2.  Create better customised dashboards to monitor the application.
+|2.  Create better customised dashboards to monitor the application. |
 
-3.  Automate creation of incident tickets directly in Jira when alert is
-    triggered.
-```
+|3.  Automate creation of incident tickets directly in Jira when alert is triggered. |
+
