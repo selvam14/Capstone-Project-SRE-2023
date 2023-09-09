@@ -791,7 +791,9 @@ respond to changes in your metrics and data.
 >
 > ![](./assets/image24.png)
 >
-> **[Things to improve:]**
+
+
+**[Things to improve:]**
 
 1.  Create Cloudwatch alerts from Grafana dashboard directly instead of
     using SES.
